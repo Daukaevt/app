@@ -1,0 +1,1 @@
+<a href="https://codeclimate.com/github/Daukaevt/app/maintainability"><img src="https://api.codeclimate.com/v1/badges/0f42ee974cc2ae400dac/maintainability" /></a>
