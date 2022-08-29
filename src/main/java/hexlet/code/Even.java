@@ -3,9 +3,9 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Even {
-    private static String correct = "Correct!";
-    private static String inCorrect = "Incorrect!";
-    static int count = 0;
+    private static final String CORRECT = "Correct!";
+    private static final String INCORRECT = "Incorrect!";
+    private static int count = 0;
 
     public static void askEvenOrNot() {
         final int firstInt = 15;
@@ -30,14 +30,13 @@ public class Even {
         }
         sc.close();
     }
-
     public static String checkEven(final int nextInt, final String answer) {
         System.out.println("Question:  " + nextInt);
         var num = nextInt % 2 == 0;
         if (answer.equals("yes") && num || answer.equals("no") && !num) {
             count++;
-            return correct;
+            return CORRECT;
         }
-        return inCorrect;
+        return INCORRECT;
     }
 }
