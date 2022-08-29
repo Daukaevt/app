@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 
 public class Cli {
-
     /**
      * System.in scanner per user dialog game.
      */

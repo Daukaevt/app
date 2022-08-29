@@ -1,35 +1,52 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
-public class Even {
-    private static final String CORRECT = "Correct!";
-    private static final String INCORRECT = "Incorrect!";
-    private static int count = 0;
+import static hexlet.code.CONST.*;
 
+/**
+ *  2 - Even game class.
+ */
+public class Even {
+    /**
+     * init current answers count.
+     */
+    private static int count = 0;
+    /**
+     * Even game intaractive dialog.
+     */
     public static void askEvenOrNot() {
-        final int firstInt = 15;
-        final int secondInt = 6;
-        final int thirdInt = 7;
-        final int winCount = 3;
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!\n"
                 + "May I have your name?");
         var name = sc.next();
         System.out.println("Hello, " + name + "!");
         System.out.println(
-                "Answer 'yes' if the number is even, otherwise answer 'no'.\n"
-                + "Question:  " + firstInt);
-        System.out.println(checkEven(firstInt, sc.next()));
-        System.out.println("Question:  " + secondInt);
-        System.out.println(checkEven(secondInt, sc.next()));
-        System.out.println("Question:  " + thirdInt);
-        System.out.println(checkEven(thirdInt, sc.next()));
-        if (count == winCount) {
+                "Answer 'yes' if the number is even, otherwise answer 'no'.");
+        for (int i = 0; i < MAXGAMES; i++) {
+            var intRandom = intRandom();
+            System.out.println("Question:  " + intRandom);
+            System.out.println(checkEven(intRandom, sc.next()));
+        }
+        if (count == WINCOUNT) {
             System.out.println("Congratulations, " + name + "!");
         }
         sc.close();
     }
+
+    private static int intRandom() {
+        Random rnd = new Random(); //instance of random class
+        int intRandom = rnd.nextInt(0, MAXRND);
+        return intRandom;
+    }
+
+    /**
+     * checking if random number even or not.
+     * @param nextInt random number
+     * @param answer yes/no user answer
+     * @return returns correct string from CONST.
+     */
     public static String checkEven(final int nextInt, final String answer) {
         System.out.println("Question:  " + nextInt);
         var num = nextInt % 2 == 0;
