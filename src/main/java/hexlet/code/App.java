@@ -11,11 +11,12 @@ public class App {
                 0 - Exit""");
         Scanner scan = new Scanner(System.in);
         var strScan = scan.next();
-        System.out.println("Your choice: " + strScan.toString());
+        System.out.println("Your choice: " + strScan);
         switch (strScan) {
-            case "1": Cli.haveName(); break;
-            case "2": Even.askEvenOrNot(); break;
-            default: break;
+            case "1" -> Cli.haveName();
+            case "2" -> Even.askEvenOrNot();
+            default -> {
+            }
         }
         scan.close();
     }
