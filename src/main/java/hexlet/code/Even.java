@@ -48,7 +48,6 @@ public class Even {
      * @return returns correct string from CONST.
      */
     public static String checkEven(final int nextInt, final String answer) {
-        System.out.println("Question:  " + nextInt);
         var num = nextInt % 2 == 0;
         if (answer.equals("yes") && num || answer.equals("no") && !num) {
             count++;
