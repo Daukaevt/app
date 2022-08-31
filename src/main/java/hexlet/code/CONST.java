@@ -28,4 +28,12 @@ public class CONST {
          * max random number.
          */
         public static final int MAXRND = 100;
+        /**
+         * Even game id.
+         */
+        public static final int EVEN = 2;
+        /**
+         * Calc game id.
+         */
+        public static final int CALC = 3;
 }
