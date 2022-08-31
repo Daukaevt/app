@@ -21,36 +21,6 @@ public class Even {
     public static String askIfEvenString() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
-    /**
-     * Even game interactive dialog.
-     */
-    public static void askEvenOrNot() {
-        //Engine.sayHello();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!\n"
-                + "May I have your name?");
-        var name = sc.next();
-        System.out.println("Hello, " + name + "!");
-        System.out.println(
-                "Answer 'yes' if the number is even, otherwise answer 'no'.");
-        for (int i = 0; i < MAXGAMES; i++) {
-            var intRandom = intRandom();
-            System.out.println("Question:  " + intRandom);
-            if (sc.hasNextLine()) {
-                String inputAnswer = sc.next();
-                System.out.println(checkEven(intRandom, inputAnswer));
-            }
-        }
-        congratulate(name);
-        sc.close();
-    }
-
-    private static void congratulate(final String name) {
-        if (count == WINCOUNT) {
-            System.out.println(
-                    "Congratulations, " + name + "!");
-        }
-    }
 
     public static int intRandom() {
         Random rnd = new Random(); //instance of random class

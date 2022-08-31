@@ -11,10 +11,7 @@ public class Engine {
      * init current answers count.
      */
     private static int count = 0;
-    /**
-     * init game rules question.
-     */
-    private static String gameQuestion = "";
+
     /**
      * Even game interactive dialog.
      * @param inp user game choice.
@@ -31,7 +28,10 @@ public class Engine {
         for (int i = 0; i < MAXGAMES; i++) {
             switch (inp) {
                 case EVEN:
-                    gameQuestion = Even.askIfEvenString();
+                    /*
+                      init game rules question.
+                     */
+                    String gameQuestion = Even.askIfEvenString();
                     if (i == 0) {
                         System.out.println(gameQuestion); // to add Even.String
                     }
@@ -78,21 +78,6 @@ public class Engine {
             System.out.println(
                     "Congratulations, " + name + "!");
         }
-    }
-
-    /**
-     * checking if random number even or not.
-     * @param nextInt random number
-     * @param answer yes/no user answer
-     * @return returns correct string from CONST.
-     */
-    public static String checkEven(final int nextInt, final String answer) {
-        var num = nextInt % 2 == 0;
-        if (answer.equals("yes") && num || answer.equals("no") && !num) {
-            count++;
-            return CORRECT;
-        }
-        return INCORRECT;
     }
 
 }
