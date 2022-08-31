@@ -13,6 +13,14 @@ public class Even {
      * init correct answers count.
      */
     private static int count = 0;
+
+    /**
+     * Even game if even question.
+     * @return if even question String.
+     */
+    public static String askIfEvenString() {
+        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    }
     /**
      * Even game interactive dialog.
      */
@@ -44,7 +52,7 @@ public class Even {
         }
     }
 
-    private static int intRandom() {
+    public static int intRandom() {
         Random rnd = new Random(); //instance of random class
         return rnd.nextInt(0, MAXRND);
     }
@@ -58,7 +66,7 @@ public class Even {
     public static String checkEven(final int nextInt, final String answer) {
         var num = nextInt % 2 == 0;
         if (answer.equals("yes") && num || answer.equals("no") && !num) {
-            count++;
+            //count++;
             return CORRECT;
         }
         return INCORRECT;
