@@ -10,13 +10,14 @@ import static hexlet.code.CONST.*;
  */
 public class Even {
     /**
-     * init current answers count.
+     * init correct answers count.
      */
     private static int count = 0;
     /**
-     * Even game intaractive dialog.
+     * Even game interactive dialog.
      */
     public static void askEvenOrNot() {
+        //Engine.sayHello();
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!\n"
                 + "May I have your name?");
@@ -27,18 +28,25 @@ public class Even {
         for (int i = 0; i < MAXGAMES; i++) {
             var intRandom = intRandom();
             System.out.println("Question:  " + intRandom);
-            System.out.println(checkEven(intRandom, sc.next()));
+            if (sc.hasNextLine()) {
+                String inputAnswer = sc.next();
+                System.out.println(checkEven(intRandom, inputAnswer));
+            }
         }
-        if (count == WINCOUNT) {
-            System.out.println("Congratulations, " + name + "!");
-        }
+        congratulate(name);
         sc.close();
+    }
+
+    private static void congratulate(final String name) {
+        if (count == WINCOUNT) {
+            System.out.println(
+                    "Congratulations, " + name + "!");
+        }
     }
 
     private static int intRandom() {
         Random rnd = new Random(); //instance of random class
-        int intRandom = rnd.nextInt(0, MAXRND);
-        return intRandom;
+        return rnd.nextInt(0, MAXRND);
     }
 
     /**
