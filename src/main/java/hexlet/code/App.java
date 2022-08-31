@@ -19,8 +19,9 @@ public class App {
         System.out.println("Your choice: " + strScan);
         switch (strScan) {
             case "1" -> Cli.haveName();
-            case "2" -> Even.askEvenOrNot();
-            case "3" -> Engine.makeDialog();
+            case "2" -> Engine.makeDialog(Integer.parseInt(strScan));
+                    //Even.askEvenOrNot();
+            case "3" -> Engine.makeDialog(Integer.parseInt(strScan));
             default -> {
             }
         }
