@@ -12,6 +12,7 @@ public class App {
                 Please enter the game number and press Enter.
                 1 - Greet
                 2 - Even
+                3 - Calc
                 0 - Exit""");
         Scanner scan = new Scanner(System.in);
         var strScan = scan.next();
@@ -19,6 +20,7 @@ public class App {
         switch (strScan) {
             case "1" -> Cli.haveName();
             case "2" -> Even.askEvenOrNot();
+            case "3" -> Engine.makeDialog();
             default -> {
             }
         }
