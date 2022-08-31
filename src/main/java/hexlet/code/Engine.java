@@ -26,7 +26,7 @@ public class Engine {
             var quest = Calc.makeExpression();
             System.out.println("Question:  " + quest); // to add Even.intRandom
             if (sc.hasNextLine()) {
-                System.out.print("Your answer: ");
+                System.out.print("Your answer: "); // diferent from even
                 String inputAnswer = sc.next();
                 var check = Calc.checkAnswer(quest, inputAnswer);
                 if (CORRECT.equals(check)) {
@@ -45,6 +45,11 @@ public class Engine {
                     "Congratulations, " + name + "!");
         }
     }
+
+    /**
+     * random init.
+     * @return random int from 0 to 100
+     */
 
     private static int intRandom() {
         Random rnd = new Random(); //instance of random class
