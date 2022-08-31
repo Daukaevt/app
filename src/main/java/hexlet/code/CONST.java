@@ -21,6 +21,10 @@ public class CONST {
          */
         public static final int MAXGAMES = 3;
         /**
+         * max games quontity.
+         */
+        public static final int MAXMATHOPERATIONS = 3;
+        /**
          * max random number.
          */
         public static final int MAXRND = 100;
