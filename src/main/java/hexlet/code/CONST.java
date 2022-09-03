@@ -13,6 +13,15 @@ public class CONST {
          */
         public static final String INCORRECT = "Incorrect!";
         /**
+         * try again string const.
+         */
+        public static final String TRYAGAIN =
+                "\nLet's try again, ";
+        /**
+         * Exclamation point string.
+         */
+        public static final String EXCLAMATION_POINT = " !";
+        /**
          * correct answers count to win the game.
          */
         public static final int WINCOUNT = 3;
