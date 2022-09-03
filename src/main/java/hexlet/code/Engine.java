@@ -1,7 +1,8 @@
 package hexlet.code;
 
 
-import java.util.Random;
+
+import java.util.Objects;
 import java.util.Scanner;
 
 import static hexlet.code.CONST.*;
@@ -32,37 +33,24 @@ public class Engine {
                       init game rules question.
                      */
                     String gameQuestion = Even.askIfEvenString();
-                    if (i == 0) {
-                        System.out.println(gameQuestion); // to add Even.String
-                    }
                     quest = String.valueOf(Even.intRandom());
-                    System.out.println("Question:  " + quest); // to add Even.intRandom
+                    makeQuestion(i, gameQuestion, quest);
                     if (sc.hasNextLine()) {
                         String inputAnswer = sc.next();
-                        var check = Even.checkEven(Integer.parseInt(quest), inputAnswer);
-                        if (CORRECT.equals(check)) {
-                            count++;
-                        }
-                        System.out.println(check);
+                        var check = Even.checkEven(
+                                Integer.parseInt(quest), inputAnswer);
+                        validation(check, "");
                     }
                     break;
                 case CALC:
                     gameQuestion = Calc.askResultString();
-                    if (i == 0) {
-                        System.out.println(gameQuestion); // to add Even.String
-                    }
                     quest = Calc.makeExpression();
-                    System.out.println("Question:  " + quest); // to add Even.intRandom
+                    makeQuestion(i, gameQuestion, quest);
                     if (sc.hasNextLine()) {
                         System.out.print("Your answer: "); // diferent from even
                         String inputAnswer = sc.next();
                         var check = Calc.checkAnswer(quest, inputAnswer);
-                        if (CORRECT.equals(check)) {
-                            count++;
-                        } else {
-                            check += "\nLet's try again, " + name + "!";
-                        }
-                        System.out.println(check);
+                        validation(check, name);
                     }
                     break;
                 default: throw new IllegalStateException(
@@ -73,6 +61,40 @@ public class Engine {
         sc.close();
     }
 
+    /**
+     * Validate if answer is correct.
+     * @param check if correct string.
+     * @param name user name string.
+     */
+    private static void validation(String check, final String name) {
+        if (CORRECT.equals(check)) {
+            count++;
+        } else {
+            if (!Objects.equals(name, "")) {
+                check += TRYAGAIN + name + EXCLAMATION_POINT;
+            }
+        }
+        System.out.println(check);
+    }
+
+    /**
+     * ask uniq game question.
+     * @param i game loop number int.
+     * @param gameQuestion uniq game question string.
+     * @param quest params of game question.
+     */
+    private static void makeQuestion(
+            final int i, final String gameQuestion, final String quest) {
+        if (i == 0) {
+            System.out.println(gameQuestion);
+        }
+        System.out.println("Question:  " + quest);
+    }
+
+    /**
+     * game points counter.
+     * @param name user name string.
+     */
     private static void congratulate(final String name) {
         if (count == WINCOUNT) {
             System.out.println(
