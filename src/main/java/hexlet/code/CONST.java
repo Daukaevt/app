@@ -43,6 +43,10 @@ public class CONST {
          */
         public static final int MAXRND = 100;
         /**
+         * Greet game id.
+         */
+        public static final int GREET = 1;
+        /**
          * Even game id.
          */
         public static final int EVEN = 2;
@@ -54,4 +58,8 @@ public class CONST {
          * GCD game id.
          */
         public static final int GCD = 4;
+        /**
+         * Progression game id.
+         */
+        public static final int PROGRESSION = 5;
 }
