@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.syntaxchecker.ParseException;
