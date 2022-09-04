@@ -13,6 +13,11 @@ public class CONST {
          */
         public static final String INCORRECT = "Incorrect!";
         /**
+         * wrong string const.
+         */
+        public static final String WRONG =
+                "' is wrong answer ;(. Correct answer was '";
+        /**
          * try again string const.
          */
         public static final String TRYAGAIN =
@@ -45,4 +50,8 @@ public class CONST {
          * Calc game id.
          */
         public static final int CALC = 3;
+        /**
+         * GCD game id.
+         */
+        public static final int GCD = 4;
 }
