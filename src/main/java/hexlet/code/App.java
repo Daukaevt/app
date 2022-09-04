@@ -13,6 +13,7 @@ public class App {
                 1 - Greet
                 2 - Even
                 3 - Calc
+                4 - GCD
                 0 - Exit""");
         Scanner scan = new Scanner(System.in);
         var strScan = scan.next();
@@ -22,6 +23,7 @@ public class App {
             case "2" -> Engine.makeDialog(Integer.parseInt(strScan));
                     //Even.askEvenOrNot();
             case "3" -> Engine.makeDialog(Integer.parseInt(strScan));
+            case "4" -> Engine.makeDialog(Integer.parseInt(strScan));
             default -> {
             }
         }
