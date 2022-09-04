@@ -14,18 +14,22 @@ public class App {
                 2 - Even
                 3 - Calc
                 4 - GCD
+                5 - Progression
                 0 - Exit""");
         Scanner scan = new Scanner(System.in);
-        var strScan = scan.next();
-        System.out.println("Your choice: " + strScan);
-        switch (strScan) {
-            case "1" -> Cli.haveName();
-            case "2" -> Engine.makeDialog(Integer.parseInt(strScan));
-                    //Even.askEvenOrNot();
-            case "3" -> Engine.makeDialog(Integer.parseInt(strScan));
-            case "4" -> Engine.makeDialog(Integer.parseInt(strScan));
-            default -> {
-            }
+        var intScan = scan.nextInt();
+        System.out.println("Your choice: " + intScan);
+
+        switch (intScan) {
+            case CONST.EVEN:
+                case CONST.CALC:
+                    case CONST.GCD:
+                        case CONST.PROGRESSION: Engine.makeDialog(intScan);
+                break;
+            case CONST.GREET: Cli.haveName();
+                break;
+            default:
+                //
         }
         scan.close();
     }
