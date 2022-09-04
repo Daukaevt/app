@@ -5,6 +5,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -68,6 +69,12 @@ public class Engine {
                                 .GCD.checkAnswer(quest, inputAnswer);
                         validation(check, name);
                     }
+                    break;
+                case PROGRESSION:
+                    gameQuestion = Progression.askMissingNumber();
+                    quest = hexlet.code.games
+                            .Progression.findMissingNumberInRange();
+                    makeQuestion(i, gameQuestion, quest);
                     break;
                 default: throw new IllegalStateException(
                         "Unexpected value from Engine");
