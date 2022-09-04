@@ -4,6 +4,7 @@ package hexlet.code;
 
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -53,6 +54,18 @@ public class Engine {
                         System.out.print("Your answer: "); // diferent from even
                         String inputAnswer = sc.next();
                         var check = Calc.checkAnswer(quest, inputAnswer);
+                        validation(check, name);
+                    }
+                    break;
+                case GCD:
+                    gameQuestion = hexlet.code.games.GCD.askFindGCD();
+                    quest = hexlet.code.games.GCD.findGCD();
+                    makeQuestion(i, gameQuestion, quest);
+                    if (sc.hasNextLine()) {
+                        System.out.print("Your answer: "); // diferent from even
+                        String inputAnswer = sc.next();
+                        String check = hexlet.code.games
+                                .GCD.checkAnswer(quest, inputAnswer);
                         validation(check, name);
                     }
                     break;
