@@ -17,3 +17,7 @@ https://asciinema.org/a/RcVAOdEz0CtvKKnTFNjesBNrP
 // аскинема с примером победы и поражения в игре Progression.
 https://asciinema.org/a/v4hFxxUWDgoVMTql91LCqIcBM
 https://asciinema.org/a/a1mRw6spspAB6UEMYa8WgnR5I
+
+// аскинема с примером победы и поражения в игре Prime.
+https://asciinema.org/a/NUtvGJ9SxoRPSqAI8jIznvkc6
+https://asciinema.org/a/PQEmeIh8YTEKNOxEazCIRxzkB
