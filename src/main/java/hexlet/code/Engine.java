@@ -2,10 +2,7 @@ package hexlet.code;
 
 
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -80,6 +77,19 @@ public class Engine {
                         String inputAnswer = sc.next();
                         String check = hexlet.code.games
                                 .Progression.checkAnswer(quest, inputAnswer);
+                        validation(check, name);
+                    }
+                    break;
+                case PRIME:
+                    gameQuestion = Prime.askIfPrime();
+                    quest = hexlet.code.games
+                            .Prime.getRndParams();
+                    makeQuestion(i, gameQuestion, quest);
+                    if (sc.hasNextLine()) {
+                        System.out.print("Your answer: ");
+                        String inputAnswer = sc.next();
+                        String check = hexlet.code.games
+                                .Prime.checkAnswer(quest, inputAnswer);
                         validation(check, name);
                     }
                     break;
