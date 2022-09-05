@@ -43,6 +43,14 @@ public class CONST {
          */
         public static final int MAXRND = 100;
         /**
+         * max random progression step.
+         */
+        public static final int MAXSTEP = 10;
+        /**
+         * max progression line length.
+         */
+        public static final int PROGRESSION_LENGTH = 10;
+        /**
          * Greet game id.
          */
         public static final int GREET = 1;
