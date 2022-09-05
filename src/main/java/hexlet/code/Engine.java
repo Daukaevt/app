@@ -75,6 +75,13 @@ public class Engine {
                     quest = hexlet.code.games
                             .Progression.findMissingNumberInRange();
                     makeQuestion(i, gameQuestion, quest);
+                    if (sc.hasNextLine()) {
+                        System.out.print("Your answer: ");
+                        String inputAnswer = sc.next();
+                        String check = hexlet.code.games
+                                .Progression.checkAnswer(quest, inputAnswer);
+                        validation(check, name);
+                    }
                     break;
                 default: throw new IllegalStateException(
                         "Unexpected value from Engine");
