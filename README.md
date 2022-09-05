@@ -13,3 +13,7 @@ https://asciinema.org/a/BN1cz64ydRZ98hemvZvKkR1PI
 // аскинема с примером победы и поражения в игре GCD.
 https://asciinema.org/a/uibWrwuVkCLSIzULI2eyYZDy6
 https://asciinema.org/a/RcVAOdEz0CtvKKnTFNjesBNrP
+
+// аскинема с примером победы и поражения в игре Progression.
+https://asciinema.org/a/v4hFxxUWDgoVMTql91LCqIcBM
+https://asciinema.org/a/a1mRw6spspAB6UEMYa8WgnR5I
