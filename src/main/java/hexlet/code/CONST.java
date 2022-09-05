@@ -70,4 +70,8 @@ public class CONST {
          * Progression game id.
          */
         public static final int PROGRESSION = 5;
+        /**
+         * Progression game id.
+         */
+        public static final int PRIME = 6;
 }
