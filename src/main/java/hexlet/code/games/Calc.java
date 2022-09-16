@@ -1,11 +1,44 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import org.mariuszgromada.math.mxparser.Expression;
-import org.mariuszgromada.math.mxparser.syntaxchecker.ParseException;
-import java.util.Random;
-import static hexlet.code.CONST.*;
+
+import java.util.Scanner;
+import static hexlet.code.games.Even.GAMES;
+import static hexlet.code.games.Even.MAXRND;
 
 public class Calc {
+    /**
+     * init correct answers count.
+     */
+    private static int count = 0;
+    /**
+     * max games quantity.
+     */
+    public static final int MAXMATHOPERATIONS = 3;
+
+    /**
+     * start Calc game logic.
+     * @param scName username.
+     */
+    public static void play(final String scName) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(askResultString());
+        for (int i = 0; i < GAMES; i++) {
+            var quest = makeExpression();
+            Engine.makeQuest(quest);
+            String userInput =  scanner.next();
+            String correct = checkUserInput(quest, userInput);
+            Engine.checkInputAnswer(correct);
+        }
+        if (count == GAMES) {
+            Engine.congratulate(scName);
+        }
+        scanner.close();
+
+    }
+
+
     /**
      * Calc game result question.
      * @return result question String.
@@ -18,30 +51,29 @@ public class Calc {
      * @return question string.
      */
     public static String makeExpression() {
-        Random rnd = new Random(); //instance of random class
-        int firstRND = rnd.nextInt(0, MAXRND);
-        int secondRND = rnd.nextInt(0, MAXRND);
-        int mathOperation = rnd.nextInt(0, MAXMATHOPERATIONS);
-        var mathOprtr = switch (mathOperation) {
+        int firstRND = Engine.random(MAXRND);
+        int secondRND = Engine.random(MAXRND);
+        int mathOperation = Engine.random(MAXMATHOPERATIONS);
+        var mathOperator = switch (mathOperation) {
             case 0 -> "+";
             case 1 -> "-";
             case 2 -> "*";
             default -> throw new IllegalStateException(
                     "Unexpected value: " + mathOperation);
         };
-        return firstRND + mathOprtr + secondRND;
+        return firstRND + mathOperator + secondRND;
     }
     /**
      * Calc game main logic.
-     * @param quest
-     * @param inputAnswer
+     * @param quest game quest expression.
+     * @param inputAnswer user input answer.
      * @return correct/incorrect String.
      */
-    public static String checkAnswer(
+    public static String checkUserInput(
             final String quest, final String inputAnswer) {
         Expression expr = new Expression(quest);
         double d = expr.calculate();
-        int number = 0;
+        int number;
         String incorrectStr = "'" + inputAnswer
                 + "' is wrong answer ;(. Correct answer was '" + (int) d + "'";
         try {
@@ -51,9 +83,11 @@ public class Calc {
             //ex.printStackTrace();
         }
         if ((double) number == d) {
-            return CORRECT;
+            count++;
+            return "Correct!";
         }
         return incorrectStr;
     }
+
 
 }
