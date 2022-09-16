@@ -3,6 +3,11 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class App {
+    /**
+     * max game id.
+     */
+    private static final int MAXID = 6;
+
     public static void main(final String[] args) {
         userDialog();
     }
@@ -26,14 +31,8 @@ public class App {
             intScan = 0; // to exit
         }
         System.out.println("Your choice: " + intScan);
-
-        switch (intScan) {
-            case CONST.EVEN, CONST.CALC, CONST.GCD,
-                    CONST.PROGRESSION, CONST.PRIME ->
-                        Engine.makeDialog(intScan);
-            case CONST.GREET -> Cli.haveName();
-            default -> {
-            }
+        if (0 < intScan && intScan <= MAXID) {
+            Cli.haveName(intScan);
         }
         scan.close();
     }
