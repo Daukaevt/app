@@ -1,44 +1,59 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 import java.util.Scanner;
 
-import static hexlet.code.CONST.*;
-
-/**
- *  2 - Even game class.
- */
 public class Even {
     /**
      * init correct answers count.
      */
     private static int count = 0;
+    /**
+     * number of games.
+     */
+    public static final int GAMES = 3;
+    /**
+     * max random number.
+     */
+    public static final int MAXRND = 100;
 
     /**
-     * Even game if even question.
-     * @return if even question String.
+     * start Even game logic.
+     * @param scName username.
      */
-    public static String askIfEvenString() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    }
-
-    public static int intRandom() {
-        Random rnd = new Random(); //instance of random class
-        return rnd.nextInt(0, MAXRND);
-    }
-
-    /**
-     * checking if random number even or not.
-     * @param nextInt random number
-     * @param answer yes/no user answer
-     * @return returns correct string from CONST.
-     */
-    public static String checkEven(final int nextInt, final String answer) {
-        var num = nextInt % 2 == 0;
-        if (answer.equals("yes") && num || answer.equals("no") && !num) {
-            //count++;
-            return CORRECT;
+    public static void play(final String scName) {
+        Scanner scanner = new Scanner(System.in);
+        String question =
+                "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        System.out.println(question);
+        for (int i = 0; i < GAMES; i++) {
+            int nextRND = Engine.random(MAXRND);
+            Engine.makeQuest(Integer.toString(nextRND));
+            String userInput =  scanner.next();
+            String correct = checkUserInput(nextRND, userInput, scName);
+            Engine.checkInputAnswer(correct);
         }
-        return INCORRECT;
+        if (count == GAMES) {
+            Engine.congratulate(scName);
+        }
+        scanner.close();
     }
+
+    private static String checkUserInput(
+            final int nextRND, final String userInput, final String scName) {
+        var correctAnswer = correctAnswer(nextRND);
+        if (userInput.equals(correctAnswer)) {
+            count++;
+            return "Correct!";
+        }
+        return "'" + userInput
+                + "' is wrong answer ;(. Correct answer was '" + correctAnswer
+                + "'.\nLet's try again, " + scName;
+    }
+    private static String correctAnswer(final int nextRND) {
+        return nextRND % 2 == 0 ? "yes" : "no";
+    }
+
+
+
 }
