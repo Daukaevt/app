@@ -1,11 +1,54 @@
 package hexlet.code.games;
 
 
-import java.util.Random;
+import hexlet.code.Engine;
 
-import static hexlet.code.CONST.*;
+import java.util.Random;
+import java.util.Scanner;
+
+import static hexlet.code.games.Even.GAMES;
 
 public class Progression {
+    /**
+     * init correct answers count.
+     */
+    private static int count = 0;
+    /**
+     * max random progression step.
+     */
+    public static final int MAXSTEP = 10;
+    /**
+     * max progression line length.
+     */
+    public static final int PROGRESSION_LENGTH = 10;
+    /**
+     * correct string const.
+     */
+    public static final String CORRECT = "Correct!";
+    /**
+     * wrong string const.
+     */
+    public static final String WRONG =
+            "' is wrong answer ;(. Correct answer was '";
+    /**
+     * start Progression game logic.
+     * @param scName username.
+     */
+    public static void play(final String scName) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(askMissingNumber());
+        for (int i = 0; i < GAMES; i++) {
+            var quest = makeExpression();
+            Engine.makeQuest(quest);
+            String userInput =  scanner.next();
+            String correct = checkUserInput(quest, userInput);
+            Engine.checkInputAnswer(correct);
+        }
+        if (count == GAMES) {
+            Engine.congratulate(scName);
+        }
+        scanner.close();
+    }
 
     /**
      * game missing number question.
@@ -19,18 +62,21 @@ public class Progression {
      * missing number question params.
      * @return missing number question params string.
      */
-    public static String findMissingNumberInRange() {
+    public static String makeExpression() {
         Random rnd = new Random(); //instance of random class
-        int firstRangeNum = rnd.nextInt(0, MAXRND);
+        int firstRangeNum = rnd.nextInt(0, Even.MAXRND);
         int stepRange = rnd.nextInt(1, MAXSTEP);
         int indexedRange = rnd.nextInt(0, PROGRESSION_LENGTH);
-        StringBuilder str = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < PROGRESSION_LENGTH; i++) {
-            str = i == indexedRange
-                    ? str.append(" ..") : str.append(" ").append(firstRangeNum);
+            if (i == indexedRange) {
+                stringBuilder.append(" ..");
+            } else {
+                stringBuilder.append(" ").append(firstRangeNum);
+            }
             firstRangeNum += stepRange;
         }
-        return str.toString();
+        return stringBuilder.toString();
 
     }
 
@@ -40,7 +86,7 @@ public class Progression {
      * @param inputAnswer user input answer.
      * @return correct/incorrect string.
      */
-    public static String checkAnswer(
+    public static String checkUserInput(
             final String quest, final String inputAnswer) {
         var string = quest.split(" ");
         var answerInt = 0;
@@ -67,8 +113,10 @@ public class Progression {
         String incorrectStr = "'" + inputAnswer
                 + WRONG + answerInt + "'";
         if (String.valueOf(answerInt).equals(inputAnswer)) {
+            count++;
             return CORRECT;
         }
         return incorrectStr;
     }
+
 }
